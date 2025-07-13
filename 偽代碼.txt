@@ -1,0 +1,110 @@
+其實法律這種東西跟程式很像，我想要把法律題目的答案改寫成"偽代碼"形式，保存在GITHUB裡面，因為記憶程式邏輯 比記憶中文還要容易。你可以收尋資料，以及幫我想想我的"偽代碼"法程式要如何跟github相容嗎?
+
+
+你這個想法很酷！
+其實「偽代碼」(pseudocode)方式來記憶和理解法律邏輯，對理工腦真的很有幫助。
+這種做法就像把法律「條文」、「解釋」或「判斷邏輯」轉換成有條件判斷的結構（if-else、switch、for、while…），直接用「演算法」記憶法律問題，遇到實務案例時更容易有系統地推理。
+
+第一部分：法律偽代碼設計原則
+條文對應→函數/條件
+每個條文可對應一個 function 或 if 判斷。例如「刑法 §23 正當防衛」可寫成 is_justified_defense(act, threat)。
+
+要件分解→多層if
+將條件一層一層拆開，對應各個要件（如「緊急狀況」、「不法侵害」、「必要防衛」等）。
+
+結果輸出→return 判斷
+最終結果給出 True/False 或一個狀態（如「構成犯罪」、「阻卻違法」、「需減刑」等）。
+
+case library（案例資料庫）
+可以考慮用 JSON、Markdown 或 Python dict 形式保存典型案例，當作自動測試用例。
+
+第二部分：與GitHub相容的存法
+GitHub 支援所有純文字格式。你可以選幾種格式：
+
+Markdown (.md)
+最通用、人可讀性高，可以夾雜「法律原文」、「偽代碼」、「說明」。
+
+Python/Jupyter Notebook (.py, .ipynb)
+可以直接用函數、docstring寫條文、註解；甚至自動化測試。
+
+JSON/YAML
+如果你要大量資料自動解析、生成題庫，可以儲存成結構化格式。
+
+Plain Text (.txt)
+也可以，適合初步整理。
+
+偽代碼風格範例（以刑法 §23 正當防衛為例）
+1. Markdown寫法：
+markdown
+複製
+編輯
+## 刑法 §23 正當防衛 Pseudocode
+
+function is_justified_defense(act):
+if is_present_illegal_invasion(act.threat):
+if is_necessary_defense(act):
+return "阻卻違法"
+else if is_excessive_defense(act):
+return "減輕或免除其刑"
+return "違法"
+
+markdown
+複製
+編輯
+
+**條件說明：**
+- `is_present_illegal_invasion(threat)`：判斷是否「現在」的不法侵害
+- `is_necessary_defense(act)`：判斷是否「必要」的防衛行為
+- `is_excessive_defense(act)`：判斷是否「防衛過當」
+2. Python假碼寫法：
+python
+複製
+編輯
+def is_justified_defense(threat, act):
+    if is_present_illegal_invasion(threat):
+        if is_necessary_defense(act):
+            return "阻卻違法"
+        elif is_excessive_defense(act):
+            return "減輕或免除其刑"
+    return "違法"
+3. 更有趣的進階做法（案例測試）：
+python
+複製
+編輯
+def test_defense():
+    assert is_justified_defense('current', 'necessary') == "阻卻違法"
+    assert is_justified_defense('current', 'excessive') == "減輕或免除其刑"
+    assert is_justified_defense('not_current', 'any') == "違法"
+跟GitHub搭配的方法
+建立新repo，命名如 law-pseudocode-notes
+
+每個主題一個資料夾或.md檔，例如 /criminal-law/defense.md
+
+可以用README說明格式
+
+用 Jupyter Notebook 也很棒，能即時展示邏輯（適合Python風格）
+
+如果將來想轉成自動化題庫，資料建議結構化（JSON or YAML）
+
+建議進階玩法
+AI+法律題自動評分： 以後你還可以結合自動化單元測試（pytest），讓自己出題、自己用偽代碼檢查答案。
+
+和Typora或Obsidian筆記串接： 偽代碼和說明同步整理。
+
+你想要的範例結構（repo根目錄）
+bash
+複製
+編輯
+/law-pseudocode-notes
+    /criminal-law
+        defense.md
+        theft.md
+    /civil-law
+        contract.md
+    README.md
+你可以怎麼開始？
+選定一個主題（如正當防衛）先寫一個偽代碼.md檔
+
+用上述格式存到GitHub，隨時增修
+
+有需要的話我可以幫你生一份範例repo初始結構！
