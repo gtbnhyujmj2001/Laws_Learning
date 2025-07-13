@@ -1,0 +1,106 @@
+選定一個主題（如正當防衛）先寫一個偽代碼.md檔 >> 我會更考慮直接從國考題目下手，因為我畢竟要考律師，直接記憶國考題目會更有效率。你能夠搜索網路，隨便一個律師國考的題目，展示妳的"偽代碼"理解嗎?
+
+我找到一題實際的律師國考申論題（102 年律師二試憲法與行政法），題目如下：
+
+題目摘要：
+
+甲女為大陸地區人民，與臺灣地區人民乙男合法結婚並來台居留。某日參加合法集會遊行，並發言批評政府。後內政部以其「參與政治活動」為由，認定違反《臺灣地區與大陸地區人民關係條例》第18條第1項第3款，未事先給予答辯機會即強制出境並收容，限制其人身自由。甲女主張其憲法上基本權利受侵害，並要求進行正反意見分析。
+lawbank.com.tw
++8
+public.tw
++8
+lawyer.get.com.tw
++8
+
+以下是我把這題 申論題邏輯拆解成偽代碼（pseudocode）的範例，用 GitHub 友善格式呈現：
+
+markdown
+複製
+編輯
+# 102年律師二試（憲法/行政法）題 – 偽代碼分析
+
+function evaluate_case(甲女):
+# Step 1: 判斷主體是否有憲法基本權主張資格
+if is_constitutional_subject(甲女):
+subject_status = True
+else:
+subject_status = False
+
+makefile
+複製
+編輯
+# Step 2: 分析具體限制（出境 & 收容）
+if internal_affairs_ministry_action == "強制出境" or "收容":
+    restricted_rights = ["遷徙自由", "集會自由", "言論自由", "訴願權"]
+
+# Step 3: 憲法保障 vs 臺港澳條例
+review_legality = if is_reasonable_limit(restricted_rights, statutory_basis=《臺灣地區與大陸地區人民關係條例》)
+
+# Step 4: 程序正義之檢驗
+if no_pre_hearing or no_opportunity_to_be_heard:
+    procedural_violation = True
+else:
+    procedural_violation = False
+
+# Step 5: 正反見解陳述
+accept_argument = []
+reject_argument = []
+if subject_status:
+    # 正面：具有憲法保護資格，應受保障
+    accept_argument.append("甲女為憲法基本權主體，具言論集會自由")
+
+    if procedural_violation:
+        accept_argument.append("違反正當法律程序要求")
+
+    if not review_legality:
+        accept_argument.append("比例原則、必要性不足")
+
+else:
+    reject_argument.append("非憲法基本權主體")
+
+# 調整分析結論
+conclusion = summarize(accept_argument, reject_argument)
+return conclusion
+複製
+編輯
+各段說明：
+主體資格 (is_constitutional_subject)
+判斷大陸地區人民是否能主張憲法基本權，有三分法與兩分法不同見解。
+
+權利限制識別
+被強制出境、收容，即影響「人身自由」與「遷徙自由」，且會連帶影響「集會与言論自由」與「訴願程序權」。
+
+是否合法基礎分析 (is_reasonable_limit)
+檢視是否符合法律保留、比例原則、目的正當性等要件，並依據《條例》第18條是否允許，以及是否合理。
+
+程序正義判斷
+如未給予「陳述意見」機會，即可能違反程序正義和《憲法》第16條保障程序正義。
+
+正反意見陳述
+將支持與反對各種見解用 list 收納，最後以客觀方式做綜合評析。
+
+結論生成 (summarize)
+將所有點彙整成主張與反方意見後的論結，可以直接拿去作申論題答案骨架。
+
+🎯 建議用法
+將這段偽代碼作為 .md 檔，放入 GitHub：
+
+bash
+複製
+編輯
+/law-pseudocode-notes
+  /憲法-行政法
+    102_大陸配偶集會發言.md
+同時附上「題目摘要」、「條文引用」、「主要法律爭點」說明。
+
+若要延伸，可加上 test_cases.json：
+
+json
+複製
+編輯
+{
+  "case1": {"subject":"甲女", "action":"強制出境", "procedure":"no_hearing"},
+  ...
+}
+也可以將此偽代碼轉為 Python 函式，並以 pytest 做單元測試。
+
